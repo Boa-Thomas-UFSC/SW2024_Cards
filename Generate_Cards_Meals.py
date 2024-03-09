@@ -2,27 +2,33 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 from matplotlib.patches import Rectangle
 import textwrap
+from matplotlib.font_manager import FontProperties
 
-def create_dinner_card(ax, meal, date, location):
+def create_dinner_card(ax, meal, date, location, font_path):
+    # Load the custom font
+    custom_font = FontProperties(fname=font_path)
+    
     # Add a black border by creating a rectangle that covers the edges of the subplot
     rect = Rectangle((0, 0), 1, 1, linewidth=5, edgecolor='black', facecolor='none', transform=ax.transAxes)
     ax.add_patch(rect)
 
-    # Add date, meal, and location text
-    ax.text(0.5, 0.85, date, fontsize=16, weight='bold', ha='center', transform=ax.transAxes)
+    # Add date, meal, and location text with the custom font
+    ax.text(0.5, 0.85, date, fontsize=16, weight='bold', ha='center', transform=ax.transAxes, fontproperties=custom_font)
     
     # Wrap text manually if necessary
     wrapped_meal = textwrap.fill(meal, width=20)  # Adjust 'width' as needed based on your text and font size
-    ax.text(0.5, 0.5, wrapped_meal, fontsize=12, ha='center', va='center', transform=ax.transAxes)
+    ax.text(0.5, 0.5, wrapped_meal, fontsize=12, ha='center', va='center', transform=ax.transAxes, fontproperties=custom_font)
 
-    ax.text(0.5, 0.15, location, fontsize=10, ha='center', weight='bold', transform=ax.transAxes)
+    ax.text(0.5, 0.15, location, fontsize=10, ha='center', weight='bold', transform=ax.transAxes, fontproperties=custom_font)
 
     # Remove axes
     ax.axis('off')
 
+# Path to your custom font
+font_path = 'HelveticaNowDisplay-Regular.ttf'  # Replace with the actual path to your .ttf font file
 
 # Create a PDF to hold the business cards
-pdf_pages = PdfPages('lunch_cards1003.pdf')
+pdf_pages = PdfPages('lunch_cards1003_v2.pdf')
 
 # Constants for an A4 page and cards
 A4_WIDTH_INCHES = 8.27  # A4 paper width in inches
@@ -52,30 +58,31 @@ CARDS_PER_PAGE = CARDS_PER_ROW * ROWS_PER_PAGE
 #     'Pizza - Pepperoni': 2,  # Combined count for "Pepperoni" and the repeated "Pepperoni"
 #     'Pizza - Piu Piu': 3
 #     }
+
 #Lunch 10/03
 meals = {
-    'Lanche - Pão carne e queijo': 2,
-    'Lanche - Smaga Bacon + 60g de batata': 6,
-    'Lanche - Smaga salada + batata de 60g': 1,
-    'Sushi - Combo 15 peças sushi': 8,
-    'Massa - Gnocchi com molho Lasagne alla Bolognese': 3,
-    'Massa - Penne com molho Lasagne alla Bolognese': 3,
-    'Massa - Penne com molho Cremoso con Pollo, Salami e Pomodoro Secchi': 6,
-    'Massa - Spaghetti com molho Cremoso con Pollo, Salami e Pomodoro Secchi': 3,
-    'Massa - Gnocchi com molho Al Ragú di Carne': 2,
-    'Massa - Spaghetti com molho Al Sugo': 2,
-    'Massa - Penne com molho Al Ragú di Carne': 3,
-    'Massa - Spaghetti com molho Lasagne di Pollo': 2,
-    'Massa - Penne com molho Lasagne di Pollo': 2,
-    'Pizza - Calabresa': 4,
-    'Pizza - Margherita': 4,
-    'Pizza - Piu Piu': 4,
-    'Arroz, feijão, iscas de filé suíno empanado ao molho barbecue, fritas e salada verde': 11,
-    'Arroz, feijão, bife grelhado, ovo frito, fritas e salada verde': 10,
-    'Arroz, feijão, iscas de filé de frango à parmegiana, fritas e salada verde': 9
+    'Lanche - Pão carne e queijo': 10,
+    'Lanche - Smaga Bacon + 60g de batata': 10,
+    'Lanche - Smaga salada + batata de 60g': 10,
+    'Sushi - Combo 15 peças sushi': 10,
+    'Massa - Gnocchi com molho Lasagne alla Bolognese': 5,
+    'Massa - Penne com molho Lasagne alla Bolognese': 5,
+    'Massa - Penne com molho Cremoso con Pollo, Salami e Pomodoro Secchi': 10,
+    'Massa - Spaghetti com molho Cremoso con Pollo, Salami e Pomodoro Secchi': 10,
+    'Massa - Gnocchi com molho Al Ragú di Carne': 10,
+    'Massa - Spaghetti com molho Al Sugo': 10,
+    'Massa - Penne com molho Al Ragú di Carne': 10,
+    'Massa - Spaghetti com molho Lasagne di Pollo': 10,
+    'Massa - Penne com molho Lasagne di Pollo': 10,
+    'Pizza - Calabresa': 5,
+    'Pizza - Margherita': 5,
+    'Pizza - Piu Piu': 5,
+    'Pizza - Pepperoni': 5,
+    'Arroz, feijão, iscas de filé suíno empanado ao molho barbecue, fritas e salada verde': 15,
+    'Arroz, feijão, bife grelhado, ovo frito, fritas e salada verde': 15,
+    'Massa - Gnocchi com molho Cremoso con Pollo, Salami e Pomodoro Secchi': 10,
+    'Massa - Spaghetti com molho Al Ragú di Carne': 10
 }
-
-
 
 # Initialize a new A4 page
 fig, axs = plt.subplots(ROWS_PER_PAGE, CARDS_PER_ROW, figsize=(A4_WIDTH_INCHES, A4_HEIGHT_INCHES))
@@ -89,7 +96,7 @@ for meal, count in meals.items():
         col = card_counter % CARDS_PER_ROW
 
         # Create the card on the appropriate subplot
-        create_dinner_card(axs[row, col], meal, 'Janta 09/03', 'SW Blumenau')
+        create_dinner_card(axs[row, col], meal, 'Almoço 10/03', 'SW Blumenau', font_path)
         card_counter += 1
 
         # When a page is full or all cards have been created, save the page and start a new one
