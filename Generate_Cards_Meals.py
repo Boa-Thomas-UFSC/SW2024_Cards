@@ -32,25 +32,49 @@ ROWS_PER_PAGE = 5
 CARDS_PER_PAGE = CARDS_PER_ROW * ROWS_PER_PAGE
 
 # Dictionary of meals and counts (example data)
+#Lunch 09/03
+# meals = {
+#     'Lanche - Pão carne e queijo': 4,
+#     'Lanche - Smaga bacon': 23,  # Combined count for "Smaga bacon (120g de carne, picles de pepino, cebola roxa e bacon) + batata de 60g" and "Smaga Bacon + 60g de batata"
+#     'Lanche - Smaga salada': 7,  # Combined count for "Smaga salada (120g de carne com alface e tomate) + batata de 60g" and "Smaga salada + batata de 60g"
+#     'Sushi - Combo 15 peças sushi': 30,
+#     'Massa - Gnocchi com molho Al Ragú di Carne': 2,
+#     'Massa - Gnocchi com molho Cremoso con Pollo, Salami e Pomodoro Secchi': 3,
+#     'Massa - Gnocchi com molho Lasagne alla Bolognese': 1,
+#     'Massa - Penne com molho Al Sugo': 1,
+#     'Massa - Penne com molho Cremoso con Pollo, Salami e Pomodoro Secchi': 2,
+#     'Massa - Penne com molho Lasagne alla Bolognese': 2,
+#     'Massa - Penne com molho Lasagne di Pollo': 2,
+#     'Massa - Spaghetti com molho Al Ragú di Carne': 1,
+#     'Massa - Spaghetti com molho Cremoso con Pollo, Salami e Pomodoro Secchi': 2,
+#     'Pizza - Calabresa': 9,
+#     'Pizza - Margherita': 9,
+#     'Pizza - Pepperoni': 2,  # Combined count for "Pepperoni" and the repeated "Pepperoni"
+#     'Pizza - Piu Piu': 3
+#     }
+#Lunch 10/03
 meals = {
-    'Lanche - Pão carne e queijo': 4,
-    'Lanche - Smaga bacon': 23,  # Combined count for "Smaga bacon (120g de carne, picles de pepino, cebola roxa e bacon) + batata de 60g" and "Smaga Bacon + 60g de batata"
-    'Lanche - Smaga salada': 7,  # Combined count for "Smaga salada (120g de carne com alface e tomate) + batata de 60g" and "Smaga salada + batata de 60g"
-    'Sushi - Combo 15 peças sushi': 30,
+    'Lanche - Pão carne e queijo': 2,
+    'Lanche - Smaga Bacon + 60g de batata': 6,
+    'Lanche - Smaga salada + batata de 60g': 1,
+    'Sushi - Combo 15 peças sushi': 8,
+    'Massa - Gnocchi com molho Lasagne alla Bolognese': 3,
+    'Massa - Penne com molho Lasagne alla Bolognese': 3,
+    'Massa - Penne com molho Cremoso con Pollo, Salami e Pomodoro Secchi': 6,
+    'Massa - Spaghetti com molho Cremoso con Pollo, Salami e Pomodoro Secchi': 3,
     'Massa - Gnocchi com molho Al Ragú di Carne': 2,
-    'Massa - Gnocchi com molho Cremoso con Pollo, Salami e Pomodoro Secchi': 3,
-    'Massa - Gnocchi com molho Lasagne alla Bolognese': 1,
-    'Massa - Penne com molho Al Sugo': 1,
-    'Massa - Penne com molho Cremoso con Pollo, Salami e Pomodoro Secchi': 2,
-    'Massa - Penne com molho Lasagne alla Bolognese': 2,
+    'Massa - Spaghetti com molho Al Sugo': 2,
+    'Massa - Penne com molho Al Ragú di Carne': 3,
+    'Massa - Spaghetti com molho Lasagne di Pollo': 2,
     'Massa - Penne com molho Lasagne di Pollo': 2,
-    'Massa - Spaghetti com molho Al Ragú di Carne': 1,
-    'Massa - Spaghetti com molho Cremoso con Pollo, Salami e Pomodoro Secchi': 2,
-    'Pizza - Calabresa': 9,
-    'Pizza - Margherita': 9,
-    'Pizza - Pepperoni': 2,  # Combined count for "Pepperoni" and the repeated "Pepperoni"
-    'Pizza - Piu Piu': 3
-    }
+    'Pizza - Calabresa': 4,
+    'Pizza - Margherita': 4,
+    'Pizza - Piu Piu': 4,
+    'Arroz, feijão, iscas de filé suíno empanado ao molho barbecue, fritas e salada verde': 11,
+    'Arroz, feijão, bife grelhado, ovo frito, fritas e salada verde': 10,
+    'Arroz, feijão, iscas de filé de frango à parmegiana, fritas e salada verde': 9
+}
+
 
 
 # Initialize a new A4 page
